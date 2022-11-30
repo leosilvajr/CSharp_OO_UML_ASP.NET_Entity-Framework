@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComposicaoExercicio", "Comp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringBuilderExercicio", "StringBuilderExercicio\StringBuilderExercicio.csproj", "{7EBD92DD-96E9-4A8A-BAEA-018EC1D89593}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Heranca", "Heranca\Heranca.csproj", "{8DFD8A0B-A07A-4827-B628-ADF198642F13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpcastingDowncasting", "UpcastingDowncasting\UpcastingDowncasting.csproj", "{F63553A1-09A3-461C-A8EC-16B2B200451F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{7EBD92DD-96E9-4A8A-BAEA-018EC1D89593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EBD92DD-96E9-4A8A-BAEA-018EC1D89593}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EBD92DD-96E9-4A8A-BAEA-018EC1D89593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DFD8A0B-A07A-4827-B628-ADF198642F13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DFD8A0B-A07A-4827-B628-ADF198642F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DFD8A0B-A07A-4827-B628-ADF198642F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DFD8A0B-A07A-4827-B628-ADF198642F13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F63553A1-09A3-461C-A8EC-16B2B200451F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F63553A1-09A3-461C-A8EC-16B2B200451F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F63553A1-09A3-461C-A8EC-16B2B200451F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F63553A1-09A3-461C-A8EC-16B2B200451F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
