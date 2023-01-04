@@ -1,4 +1,6 @@
 ﻿
+using ConsumirWebService.Functions;
+using ConsumirWebService.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,12 +16,14 @@ namespace ConsumirWebService
     {
         static void Main(string[] args)
         {
-            
-            var _url = "http://www.praticteste.praticsistemas2.com.br/PraticSite/PraticAppRHServlet";
-            var _action = "http://www.praticteste.praticsistemas2.com.br/PraticSite/PraticAppRHServlet";
+            Function function = new Function();
+            string soapResult = null;
+
+            Connect connect= new Connect();
+
 
             XmlDocument soapEnvelopeXml = CreateSoapEnvelope();
-            HttpWebRequest webRequest = CreateWebRequest(_url, _action);
+            HttpWebRequest webRequest = connect.CreateWebRequest();
             InsertSoapEnvelopeIntoWebRequest(soapEnvelopeXml, webRequest);
 
             //iniciar chamada assíncrona para solicitação da web.
@@ -29,28 +33,12 @@ namespace ConsumirWebService
             // faça algo útil aqui, como atualizar sua IU.
             asyncResult.AsyncWaitHandle.WaitOne();
 
+
+
             // obtém a resposta da solicitação da Web concluída.
-            string soapResult;
-            using (WebResponse webResponse = webRequest.EndGetResponse(asyncResult))
-            {
-                using (StreamReader rd = new StreamReader(webResponse.GetResponseStream()))
-                {
-                    soapResult = rd.ReadToEnd();
-                }
-                Console.Write(soapResult);
-            }
-        }
+            function.ObterResposta(soapResult, webRequest, asyncResult);
 
-        private static HttpWebRequest CreateWebRequest(string url, string action)
-        {
-            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(url);
-            webRequest.Headers.Add("SOAPAction", action);
-            webRequest.ContentType = "text/xml;charset=ISO-8859-1";
-            webRequest.Accept = "application/xml";
-            webRequest.Method = "POST";
-            return webRequest;
         }
-
         private static XmlDocument CreateSoapEnvelope()
         {
             XmlDocument xml = new XmlDocument();
