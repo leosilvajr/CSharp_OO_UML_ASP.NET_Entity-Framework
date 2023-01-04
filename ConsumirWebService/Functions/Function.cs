@@ -9,6 +9,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace ConsumirWebService.Functions
 {
@@ -25,7 +26,6 @@ namespace ConsumirWebService.Functions
                 {
                     soapResult = rd.ReadToEnd();                    
                 }
-                Console.WriteLine(soapResult);
             }
 
             return soapResult;
@@ -39,6 +39,30 @@ namespace ConsumirWebService.Functions
             {
                 soapEnvelopeXml.Save(stream);
             }
+        }
+
+        public void GravarXml(string s)
+        {
+            using (StreamWriter sw = new StreamWriter("C:\\C#\\Estados.xml"))
+            {
+                sw.WriteLine(s);
+                sw.Close();
+            }
+        }
+
+        public  void DesSerializarListaDeObjeto()
+        {
+            List<Estados> estados = null;
+            using (StreamReader stream = new StreamReader(@"C:\C#\XML.xml"))
+            {
+                XmlSerializer serializador = new XmlSerializer(typeof(List<Estados>));
+                estados = (List<Estados>)serializador.Deserialize(stream);
+            }
+        }
+
+        public string LerXmlArquivo()
+        {
+            return File.ReadAllText(@"C:\C#\XML.xml");
         }
 
     }

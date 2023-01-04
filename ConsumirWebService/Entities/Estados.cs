@@ -11,19 +11,12 @@ namespace ConsumirWebService.Entities
 {
      public class Estados
     {
-
-        [XmlElement(ElementName = "estcod")]
         public string Cod { get; set; }
-
-        [XmlElement(ElementName = "estnom")]
         public string Nome { get; set; }
 
-        public Estados() { }
-        public Estados(string cod, string nome)
+        public override string ToString()
         {
-            Cod = cod;
-            Nome = nome;
+            return $"Cod: {Cod} Nome: {Nome}"; 
         }
-       
     }
 }

@@ -42,6 +42,34 @@ namespace ConsumirWebService.Services
             xml.LoadXml(xmlEstados);
             return xml;
         }
-        //Content-Type	text/xml;charset=ISO-8859-1
+
+        //public List<Estados> ConverterXmlParaObjeto(String xml)
+        //{
+        //    byte[] byteArray = Encoding.UTF8.GetBytes(xml);
+        //    MemoryStream stream = new MemoryStream(byteArray);
+
+        //    XmlTextReader xtr = new XmlTextReader(stream);
+
+        //    List<Estados> estados = new List<Estados>();
+        //    Estados e;
+
+        //    e = new Estados();
+        //    while (xtr.Read())
+        //    {
+        //        if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "estcod")
+        //        {
+        //            e.Cod = xtr.ReadElementContentAsString();
+        //        }
+
+        //        if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "estnom")
+        //        {
+        //            e.Nome = xtr.ReadElementContentAsString();
+        //            estados.Add(e);
+        //            e = new Estados();
+        //        }
+        //    }
+        //    return estados;
+        //}
+
     }
 }

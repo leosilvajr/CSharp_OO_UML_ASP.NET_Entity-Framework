@@ -19,7 +19,7 @@ namespace SalvarStringTxt
               Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             // Write the string array to a new file named "WriteLines.txt".
-            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "WriteLines.txt")))
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, "WriteLines.xml")))
             {
                 foreach (string line in lines)
                     outputFile.WriteLine(line);

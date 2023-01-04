@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -31,11 +32,10 @@ namespace ConsumirWebService
             //iniciar chamada assíncrona para solicitação da web.
             IAsyncResult asyncResult = webRequest.BeginGetResponse(null, null);
 
+
             // obtém a resposta da solicitação da Web concluída.
             var xmlPronto = function.ObterResposta(soapResult, webRequest, asyncResult);
-
-            Console.WriteLine(xmlPronto);
-
+            function.GravarXml(xmlPronto);
 
         }
     }
