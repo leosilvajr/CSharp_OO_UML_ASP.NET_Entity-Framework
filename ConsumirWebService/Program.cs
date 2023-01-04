@@ -36,6 +36,8 @@ namespace ConsumirWebService
             // obtém a resposta da solicitação da Web concluída.
             var xmlPronto = function.ObterResposta(soapResult, webRequest, asyncResult);
             function.GravarXml(xmlPronto);
+            connect.ListarEstados();
+
 
         }
     }
