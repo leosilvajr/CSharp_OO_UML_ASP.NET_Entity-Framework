@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1874D73C-A06D-4FAE-81A4-CE9263DA0CBE}</ProjectGuid>
+    <ProjectGuid>{F740E8BF-BCC7-400D-89E9-4CE6F077B624}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsumirWebService</RootNamespace>
-    <AssemblyName>ConsumirWebService</AssemblyName>
+    <RootNamespace>SalvarStringTxt</RootNamespace>
+    <AssemblyName>SalvarStringTxt</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,16 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Estados.cs" />
-    <Compile Include="Functions\Function.cs" />
-    <Compile Include="Functions\Serializa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Connect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,17 +1,28 @@
-﻿using System;
+﻿using ConsumirWebService.Entities;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace ConsumirWebService.Services
 {
     public class Connect
     {
-        String url = "http://www.praticteste.praticsistemas2.com.br/PraticSite/PraticAppRHServlet";
-        String action = "http://www.praticteste.praticsistemas2.com.br/PraticSite/PraticAppRHServlet";
+        string url = "http://www.praticteste.praticsistemas2.com.br/PraticSite/PraticAppRHServlet";
+        string action = "http://www.praticteste.praticsistemas2.com.br/PraticSite/PraticAppRHServlet";
+
+        string xmlEstados = @"<?xml version=""1.0"" encoding=""ISO-8859-1"" ?><praticsistemas><praticServiceValidarEntrada>
+            <tokenPraticAppRHAutenticacao>ksklsd9034nmsd4jf9023nmmgf034vxa,mbnvsd73bf9lsgwb0ldhweqktrlhbgmxçshynh06</tokenPraticAppRHAutenticacao>
+            </praticServiceValidarEntrada><selecionar_estados><selecionar>true</selecionar></selecionar_estados></praticsistemas>";
+
+        string xmlMunicipios = @"<?xml version=""1.0"" encoding=""ISO-8859-1"" ?><praticsistemas><praticServiceValidarEntrada>
+            <tokenPraticAppRHAutenticacao>ksklsd9034nmsd4jf9023nmmgf034vxa,mbnvsd73bf9lsgwb0ldhweqktrlhbgmxçshynh06</tokenPraticAppRHAutenticacao>
+            </praticServiceValidarEntrada><selecionar_municipios><selecionar>true</selecionar></selecionar_municipios></praticsistemas>";
 
 
         public  HttpWebRequest CreateWebRequest()
@@ -28,17 +39,9 @@ namespace ConsumirWebService.Services
         public XmlDocument CreateSoapEnvelope()
         {
             XmlDocument xml = new XmlDocument();
-            string xmlEstados = @"<?xml version=""1.0"" encoding=""ISO-8859-1"" ?><praticsistemas><praticServiceValidarEntrada>
-            <tokenPraticAppRHAutenticacao>ksklsd9034nmsd4jf9023nmmgf034vxa,mbnvsd73bf9lsgwb0ldhweqktrlhbgmxçshynh06</tokenPraticAppRHAutenticacao>
-            </praticServiceValidarEntrada><selecionar_estados><selecionar>true</selecionar></selecionar_estados></praticsistemas>";
-
-            string xmlMunicipios = @"<?xml version=""1.0"" encoding=""ISO-8859-1"" ?><praticsistemas><praticServiceValidarEntrada>
-            <tokenPraticAppRHAutenticacao>ksklsd9034nmsd4jf9023nmmgf034vxa,mbnvsd73bf9lsgwb0ldhweqktrlhbgmxçshynh06</tokenPraticAppRHAutenticacao>
-            </praticServiceValidarEntrada><selecionar_municipios><selecionar>true</selecionar></selecionar_municipios></praticsistemas>";
-
             xml.LoadXml(xmlEstados);
             return xml;
         }
-
+        //Content-Type	text/xml;charset=ISO-8859-1
     }
 }

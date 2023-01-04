@@ -85,6 +85,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegateFunc", "DelegateFun
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumirWebService", "ConsumirWebService\ConsumirWebService.csproj", "{1874D73C-A06D-4FAE-81A4-CE9263DA0CBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalvarStringTxt", "SalvarStringTxt\SalvarStringTxt.csproj", "{F740E8BF-BCC7-400D-89E9-4CE6F077B624}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -255,6 +257,10 @@ Global
 		{1874D73C-A06D-4FAE-81A4-CE9263DA0CBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1874D73C-A06D-4FAE-81A4-CE9263DA0CBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1874D73C-A06D-4FAE-81A4-CE9263DA0CBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F740E8BF-BCC7-400D-89E9-4CE6F077B624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F740E8BF-BCC7-400D-89E9-4CE6F077B624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F740E8BF-BCC7-400D-89E9-4CE6F077B624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F740E8BF-BCC7-400D-89E9-4CE6F077B624}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

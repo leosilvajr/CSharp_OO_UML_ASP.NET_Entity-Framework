@@ -1,4 +1,5 @@
-﻿using ConsumirWebService.Services;
+﻿using ConsumirWebService.Entities;
+using ConsumirWebService.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,9 +12,10 @@ using System.Xml;
 
 namespace ConsumirWebService.Functions
 {
-    public  class Function
+    public class Function
     {
-
+        Connect connect = new Connect();
+        Estados estados = new Estados();
 
         public string ObterResposta(string soapResult, HttpWebRequest webRequest, IAsyncResult asyncResult)
         {
@@ -21,20 +23,24 @@ namespace ConsumirWebService.Functions
             {
                 using (StreamReader rd = new StreamReader(webResponse.GetResponseStream()))
                 {
-                    soapResult = rd.ReadToEnd();
+                    soapResult = rd.ReadToEnd();                    
                 }
-                Console.Write(soapResult);
+                Console.WriteLine(soapResult);
             }
 
-            return soapResult;  
+            return soapResult;
+
         }
 
-        public  void InsertSoapEnvelopeIntoWebRequest(XmlDocument soapEnvelopeXml, HttpWebRequest webRequest)
+        public void InsertSoapEnvelopeIntoWebRequest(XmlDocument soapEnvelopeXml, HttpWebRequest webRequest)
         {
+
             using (Stream stream = webRequest.GetRequestStream())
             {
                 soapEnvelopeXml.Save(stream);
             }
         }
+
     }
 }
+
