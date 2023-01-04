@@ -12,54 +12,26 @@ using System.Xml;
 
 namespace ConsumirWebService
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            Function function = new Function();
             string soapResult = null;
-
+            Function function = new Function();
             Connect connect= new Connect();
 
-
-            XmlDocument soapEnvelopeXml = CreateSoapEnvelope();
+            XmlDocument soapEnvelopeXml = connect.CreateSoapEnvelope();
             HttpWebRequest webRequest = connect.CreateWebRequest();
-            InsertSoapEnvelopeIntoWebRequest(soapEnvelopeXml, webRequest);
+
+            function.InsertSoapEnvelopeIntoWebRequest(soapEnvelopeXml, webRequest);
+
 
             //iniciar chamada assíncrona para solicitação da web.
             IAsyncResult asyncResult = webRequest.BeginGetResponse(null, null);
 
-            // suspende este thread até que a chamada seja concluída. você pode querer
-            // faça algo útil aqui, como atualizar sua IU.
-            asyncResult.AsyncWaitHandle.WaitOne();
-
-
 
             // obtém a resposta da solicitação da Web concluída.
             function.ObterResposta(soapResult, webRequest, asyncResult);
-
-        }
-        private static XmlDocument CreateSoapEnvelope()
-        {
-            XmlDocument xml = new XmlDocument();
-            string xmlEstados = @"<?xml version=""1.0"" encoding=""ISO-8859-1"" ?><praticsistemas><praticServiceValidarEntrada>
-            <tokenPraticAppRHAutenticacao>ksklsd9034nmsd4jf9023nmmgf034vxa,mbnvsd73bf9lsgwb0ldhweqktrlhbgmxçshynh06</tokenPraticAppRHAutenticacao>
-            </praticServiceValidarEntrada><selecionar_estados><selecionar>true</selecionar></selecionar_estados></praticsistemas>";
-
-            string xmlMunicipios = @"<?xml version=""1.0"" encoding=""ISO-8859-1"" ?><praticsistemas><praticServiceValidarEntrada>
-            <tokenPraticAppRHAutenticacao>ksklsd9034nmsd4jf9023nmmgf034vxa,mbnvsd73bf9lsgwb0ldhweqktrlhbgmxçshynh06</tokenPraticAppRHAutenticacao>
-            </praticServiceValidarEntrada><selecionar_municipios><selecionar>true</selecionar></selecionar_municipios></praticsistemas>";
-
-            xml.LoadXml(xmlEstados);
-            return xml;
-        }
-
-        private static void InsertSoapEnvelopeIntoWebRequest(XmlDocument soapEnvelopeXml, HttpWebRequest webRequest)
-        {
-            using (Stream stream = webRequest.GetRequestStream())
-            {
-                soapEnvelopeXml.Save(stream);
-            }
         }
     
     }
