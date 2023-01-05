@@ -31,7 +31,6 @@ namespace ConsumirWebService.Functions
             }
 
             return soapResult;
-
         }
 
         public void InsertSoapEnvelopeIntoWebRequest(XmlDocument soapEnvelopeXml, HttpWebRequest webRequest)
@@ -49,7 +48,7 @@ namespace ConsumirWebService.Functions
             GravarXml(s, charset);
         }
 
-            public void GravarXml(string s, String charset)
+        public void GravarXml(string s, String charset)
         {
             var encoding = Encoding.GetEncoding("ISO-8859-1");
             using (StreamWriter sw = new StreamWriter(arquivoXml, false, encoding))

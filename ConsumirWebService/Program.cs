@@ -40,8 +40,7 @@ namespace ConsumirWebService
             var xmlPronto = function.ObterResposta(soapResult, webRequest, asyncResult);
 
             // convert string to stream
-            byte[] byteArray = Encoding.Default.GetBytes(xmlPronto);
-            
+            byte[] byteArray = Encoding.Default.GetBytes(xmlPronto);           
             MemoryStream stream = new MemoryStream(byteArray);
 
             List<Estados> estados = new List<Estados>();
