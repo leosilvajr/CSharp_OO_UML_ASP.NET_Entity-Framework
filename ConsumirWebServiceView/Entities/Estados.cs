@@ -30,6 +30,7 @@ namespace ConsumirWebServiceView.Entities
         public void MontarEstado(MemoryStream stream, DataGridView dgv)
         {
             List<Estados> estados = new List<Estados>();
+
             XElement xml = XElement.Load(stream);
             foreach (XElement x in xml.Elements())
             {
@@ -43,6 +44,9 @@ namespace ConsumirWebServiceView.Entities
 
             dgv.DataSource = estados;
             dgv.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dgv.Columns["Cod"].HeaderText = "UF";
+            dgv.Columns["Nome"].HeaderText = "Estado";
 
         }
     }

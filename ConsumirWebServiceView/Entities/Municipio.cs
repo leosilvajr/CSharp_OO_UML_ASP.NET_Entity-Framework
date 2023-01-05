@@ -40,6 +40,9 @@ namespace ConsumirWebServiceView.Entities
 
             dgv.DataSource = municipio;
             dgv.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            dgv.Columns["Cod"].HeaderText = "UF";
+            dgv.Columns["Nome"].HeaderText = "Município";
         }
     }
 }

@@ -40,15 +40,16 @@ namespace ConsumirWebServiceView
         public frmPrincipal()
         {
             InitializeComponent();
-
+            txtXml.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            dgv.DataSource = null;
             HttpWebRequest webRequest = connect.CreateWebRequest(txtUrl.Text);
             XmlDocument soapEnvelopeXml = connect.CreateSoapEnvelope(txtXml.Text);
             function.InsertSoapEnvelopeIntoWebRequest(soapEnvelopeXml, webRequest);
+
             IAsyncResult asyncResult = webRequest.BeginGetResponse(null, null);
 
             // obtém a resposta da solicitação da Web concluída.
@@ -56,6 +57,7 @@ namespace ConsumirWebServiceView
 
             // convert string to stream
             byte[] byteArray = Encoding.Default.GetBytes(xmlPronto);
+
             MemoryStream stream = new MemoryStream(byteArray);
 
             if (radEstado.Checked == true && radMunicipio.Checked == false)
