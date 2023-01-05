@@ -20,9 +20,6 @@ namespace ConsumirWebService.Functions
         Connect connect = new Connect();
         Estados estados = new Estados();
         string arquivoXml = @"C:\C#\XML.xml";
-
-
-
         public string ObterResposta(string soapResult, HttpWebRequest webRequest, IAsyncResult asyncResult)
         {
             using (WebResponse webResponse = webRequest.EndGetResponse(asyncResult))
@@ -44,30 +41,6 @@ namespace ConsumirWebService.Functions
             {
                 soapEnvelopeXml.Save(stream);
             }
-        }
-
-        public List<Estados> ListarEstados()
-        {           
-
-
-            List<Estados> estados = new List<Estados>();
-            XElement xml = XElement.Load(arquivoXml);
-            foreach (XElement x in xml.Elements())
-            {
-                Estados p = new Estados()
-                {
-                    codigo = x.Element("estcod").Value,
-                    nome = x.Element("estnom").Value,
-                };
-                estados.Add(p);
-
-            }
-
-            foreach (var list in estados)
-            {
-                Console.WriteLine(list);
-            }
-            return estados;
         }
 
         public void GravarXml(string s)

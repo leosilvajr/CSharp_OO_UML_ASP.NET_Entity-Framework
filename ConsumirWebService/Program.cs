@@ -60,10 +60,7 @@ namespace ConsumirWebService
                 Console.WriteLine(list);
             }
 
-
-
-            //function.GravarXml(xmlPronto);
-            //function.ListarEstados();
+            function.GravarXml(xmlPronto);
 
         }
     }
