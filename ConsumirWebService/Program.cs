@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -27,6 +28,7 @@ namespace ConsumirWebService
             XmlDocument soapEnvelopeXml = connect.CreateSoapEnvelope();
             HttpWebRequest webRequest = connect.CreateWebRequest();
 
+
             function.InsertSoapEnvelopeIntoWebRequest(soapEnvelopeXml, webRequest);
 
             //iniciar chamada assíncrona para solicitação da web.
@@ -35,9 +37,10 @@ namespace ConsumirWebService
 
             // obtém a resposta da solicitação da Web concluída.
             var xmlPronto = function.ObterResposta(soapResult, webRequest, asyncResult);
-            function.GravarXml(xmlPronto);
-            connect.ListarEstados();
 
+
+            function.GravarXml(xmlPronto);
+            function.ListarEstados();
 
         }
     }

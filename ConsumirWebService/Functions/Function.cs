@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace ConsumirWebService.Functions
@@ -17,14 +19,17 @@ namespace ConsumirWebService.Functions
     {
         Connect connect = new Connect();
         Estados estados = new Estados();
+        string arquivoXml = @"C:\C#\XML.xml";
+
+
 
         public string ObterResposta(string soapResult, HttpWebRequest webRequest, IAsyncResult asyncResult)
         {
             using (WebResponse webResponse = webRequest.EndGetResponse(asyncResult))
             {
-                using (StreamReader rd = new StreamReader(webResponse.GetResponseStream()))
+                using (StreamReader rd = new StreamReader(webResponse.GetResponseStream(), Encoding.GetEncoding("ISO-8859-1")))
                 {
-                    soapResult = rd.ReadToEnd();                    
+                    soapResult = rd.ReadToEnd();
                 }
             }
 
@@ -41,52 +46,58 @@ namespace ConsumirWebService.Functions
             }
         }
 
-        private string UTF8_to_ISO(string value)
-        {
+        public List<Estados> ListarEstados()
+        {           
 
-            Encoding isoEncoding = Encoding.GetEncoding("ISO-8859-1");
-            Encoding utfEncoding = Encoding.UTF8;
 
-            // Converte os bytes 
-            byte[] bytesIso = utfEncoding.GetBytes(value);
+            List<Estados> estados = new List<Estados>();
+            XElement xml = XElement.Load(arquivoXml);
+            foreach (XElement x in xml.Elements())
+            {
+                Estados p = new Estados()
+                {
+                    codigo = x.Element("estcod").Value,
+                    nome = x.Element("estnom").Value,
+                };
+                estados.Add(p);
 
-            //  Obtém os bytes da string UTF 
-            byte[] bytesUtf = Encoding.Convert(utfEncoding, isoEncoding, bytesIso);
+            }
 
-            // Obtém a string ISO a partir do array de bytes convertido
-            string textoISO = utfEncoding.GetString(bytesUtf);
 
-            return textoISO;
-
+            foreach (var list in estados)
+            {
+                Console.WriteLine(list);
+            }
+            return estados;
         }
 
         public void GravarXml(string s)
         {
-
-
-            using (StreamWriter sw = new StreamWriter(UTF8_to_ISO(@"C:\C#\XML.xml")))
+            var encoding = Encoding.GetEncoding("ISO-8859-1");
+            using (StreamWriter sw = new StreamWriter(arquivoXml, false, encoding))
             {
-                
                 sw.WriteLine(s);
                 sw.Close();
             }
         }
-
-        public  void DesSerializarListaDeObjeto()
-        {
-            List<Estados> estados = null;
-            using (StreamReader stream = new StreamReader(@"C:\C#\XML.xml"))
-            {
-                XmlSerializer serializador = new XmlSerializer(typeof(List<Estados>));
-                estados = (List<Estados>)serializador.Deserialize(stream);
-            }
-        }
-
-        public string LerXmlArquivo()
-        {
-            return File.ReadAllText(@"C:\C#\XML.xml");
-        }
-
     }
+
 }
+
+//public  void DesSerializarListaDeObjeto()
+//{
+//    List<Estados> estados = null;
+//    using (StreamReader stream = new StreamReader(arquivoXml))
+//    {
+//        XmlSerializer serializador = new XmlSerializer(typeof(List<Estados>));
+//        estados = (List<Estados>)serializador.Deserialize(stream);
+//    }
+//}
+
+//public string LerXmlArquivo()
+//{
+//    return File.ReadAllText(arquivoXml);
+//}
+
+
 
