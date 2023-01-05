@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ConsumirWebService
 {
@@ -38,9 +39,31 @@ namespace ConsumirWebService
             // obtém a resposta da solicitação da Web concluída.
             var xmlPronto = function.ObterResposta(soapResult, webRequest, asyncResult);
 
+            // convert string to stream
+            byte[] byteArray = Encoding.Default.GetBytes(xmlPronto);
+            
+            MemoryStream stream = new MemoryStream(byteArray);
 
-            function.GravarXml(xmlPronto);
-            function.ListarEstados();
+            List<Estados> estados = new List<Estados>();
+            XElement xml = XElement.Load(stream);
+            foreach (XElement x in xml.Elements())
+            {
+                Estados p = new Estados()
+                {
+                    codigo = x.Element("estcod").Value,
+                    nome = x.Element("estnom").Value,
+                };
+                estados.Add(p);
+            }
+            foreach (var list in estados)
+            {
+                Console.WriteLine(list);
+            }
+
+
+
+            //function.GravarXml(xmlPronto);
+            //function.ListarEstados();
 
         }
     }

@@ -63,7 +63,6 @@ namespace ConsumirWebService.Functions
 
             }
 
-
             foreach (var list in estados)
             {
                 Console.WriteLine(list);
@@ -72,6 +71,12 @@ namespace ConsumirWebService.Functions
         }
 
         public void GravarXml(string s)
+        {
+            String charset = null;
+            GravarXml(s, charset);
+        }
+
+            public void GravarXml(string s, String charset)
         {
             var encoding = Encoding.GetEncoding("ISO-8859-1");
             using (StreamWriter sw = new StreamWriter(arquivoXml, false, encoding))
