@@ -44,7 +44,10 @@ namespace ConsumirWebService.Services
         public XmlDocument CreateSoapEnvelope()
         {
             XmlDocument xml = new XmlDocument();
+            
             xml.LoadXml(xmlEstados);
+
+
             return xml;
         }
 
@@ -60,6 +63,12 @@ namespace ConsumirWebService.Services
                     nome = x.Element("estnom").Value,
                 };
                 estados.Add(p);
+
+            }
+
+            foreach (var list in estados)
+            {
+                Console.WriteLine(list);
             }
             return estados;
         }

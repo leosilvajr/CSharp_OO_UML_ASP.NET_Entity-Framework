@@ -26,7 +26,7 @@ namespace ConsumirWebService.Entities
 
         public override string ToString()
         {
-            return $"Cod: {Cod} Nome: {Nome}"; 
+            return $"[Cod: {Cod} ]   [Nome: {Nome}]"; 
         }
     }
 }
